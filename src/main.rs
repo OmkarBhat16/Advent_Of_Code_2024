@@ -9,6 +9,8 @@ fn main() {
     match day.as_str() {
         "1a" => solutions::day01::part1(),
         "1b" => solutions::day01::part2(),
+        "2a" => solutions::day02::part1(),
+        "2b" => solutions::day02::part2(),
         _ => println!("invalid day"),
     }
 }
