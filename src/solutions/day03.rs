@@ -31,14 +31,13 @@ pub fn part2() {
     let re1 = Regex::new(r"don't\(\)").unwrap();
     let re2 = Regex::new(r"do\(\)").unwrap();
     for line in reader.lines() {
-        let mut line = line.unwrap();
+        let line = line.unwrap();
         let dont_ranges: Vec<_> = re1.find_iter(&line).collect();
-        let donts: Vec<i32> = dont_ranges.iter().map(|r| r.start() as i32).collect();
+        let mut donts: Vec<i32> = dont_ranges.iter().map(|r| r.start() as i32).collect();
+        donts.push(line.len() as i32);
         let do_ranges: Vec<_> = re2.find_iter(&line).collect();
-        let dos: Vec<i32> = do_ranges.iter().map(|r| r.start() as i32).collect();
-
-        // println!("{:?}", donts);
-        // println!("{:?}", dos);
+        let mut dos: Vec<i32> = do_ranges.iter().map(|r| r.start() as i32).collect();
+        dos.insert(0, 0);
 
         let mut pairs: Vec<(i32, i32)> = Vec::new();
         let mut dont_idx = 0;
